@@ -1,11 +1,13 @@
-# api documentation for  [qs (v6.4.0)](https://github.com/ljharb/qs)  [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-qs.svg)](https://travis-ci.org/npmdoc/node-npmdoc-qs)
+# api documentation for  [qs (v6.4.0)](https://github.com/ljharb/qs)  [![npm package](https://img.shields.io/npm/v/npmdoc-qs.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-qs) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-qs.svg)](https://travis-ci.org/npmdoc/node-npmdoc-qs)
 #### A querystring parser that supports nesting and arrays, with a depth limit
 
 [![NPM](https://nodei.co/npm/qs.png?downloads=true)](https://www.npmjs.com/package/qs)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-qs/build/screen-capture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-qs_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-qs/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-qs/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-qs_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-qs/build/apidoc.html)
 
-![package-listing](https://npmdoc.github.io/node-npmdoc-qs/build/screen-capture.npmPackageListing.svg)
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-qs/build/screenCapture.npmPackageListing.svg)
+
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-qs/build/screenCapture.npmPackageDependencyTree.svg)
 
 
 

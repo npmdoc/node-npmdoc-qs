@@ -1,20 +1,20 @@
 <svg height="270" width="720" xmlns="http://www.w3.org/2000/svg">
 <rect height="270" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
-<tspan x="10" y="26">  0.  2017-04-07 16:29:31 +0000   105247 bytes  .</tspan>
-<tspan x="10" y="42">  1.  2017-04-07 16:29:31 +0000    10370 bytes  CHANGELOG.md</tspan>
-<tspan x="10" y="58">  2.  2017-04-07 16:29:31 +0000     1654 bytes  LICENSE</tspan>
-<tspan x="10" y="74">  3.  2017-04-07 16:29:31 +0000    13292 bytes  README.md</tspan>
-<tspan x="10" y="90">  4.  2017-04-07 16:29:31 +0000    18185 bytes  dist/qs.js</tspan>
-<tspan x="10" y="106">  5.  2017-04-07 16:29:31 +0000      387 bytes  lib/formats.js</tspan>
-<tspan x="10" y="122">  6.  2017-04-07 16:29:31 +0000      211 bytes  lib/index.js</tspan>
-<tspan x="10" y="138">  7.  2017-04-07 16:29:31 +0000     5492 bytes  lib/parse.js</tspan>
-<tspan x="10" y="154">  8.  2017-04-07 16:29:31 +0000     6086 bytes  lib/stringify.js</tspan>
-<tspan x="10" y="170">  9.  2017-04-07 16:29:31 +0000     4891 bytes  lib/utils.js</tspan>
-<tspan x="10" y="186"> 10.  2017-04-07 16:29:31 +0000     2991 bytes  package.json</tspan>
-<tspan x="10" y="202"> 11.  2017-04-07 16:29:31 +0000       81 bytes  test/index.js</tspan>
-<tspan x="10" y="218"> 12.  2017-04-07 16:29:31 +0000    20702 bytes  test/parse.js</tspan>
-<tspan x="10" y="234"> 13.  2017-04-07 16:29:31 +0000    19832 bytes  test/stringify.js</tspan>
-<tspan x="10" y="250"> 14.  2017-04-07 16:29:31 +0000     1073 bytes  test/utils.js</tspan>
+<tspan x="10" y="26">  0.  2017-04-07 16:30:55 +0000   105247 bytes  .</tspan>
+<tspan x="10" y="42">  1.  2017-04-07 16:30:55 +0000    10370 bytes  CHANGELOG.md</tspan>
+<tspan x="10" y="58">  2.  2017-04-07 16:30:55 +0000     1654 bytes  LICENSE</tspan>
+<tspan x="10" y="74">  3.  2017-04-07 16:30:55 +0000    13292 bytes  README.md</tspan>
+<tspan x="10" y="90">  4.  2017-04-07 16:30:55 +0000    18185 bytes  dist/qs.js</tspan>
+<tspan x="10" y="106">  5.  2017-04-07 16:30:55 +0000      387 bytes  lib/formats.js</tspan>
+<tspan x="10" y="122">  6.  2017-04-07 16:30:55 +0000      211 bytes  lib/index.js</tspan>
+<tspan x="10" y="138">  7.  2017-04-07 16:30:55 +0000     5492 bytes  lib/parse.js</tspan>
+<tspan x="10" y="154">  8.  2017-04-07 16:30:55 +0000     6086 bytes  lib/stringify.js</tspan>
+<tspan x="10" y="170">  9.  2017-04-07 16:30:55 +0000     4891 bytes  lib/utils.js</tspan>
+<tspan x="10" y="186"> 10.  2017-04-07 16:30:55 +0000     2991 bytes  package.json</tspan>
+<tspan x="10" y="202"> 11.  2017-04-07 16:30:55 +0000       81 bytes  test/index.js</tspan>
+<tspan x="10" y="218"> 12.  2017-04-07 16:30:55 +0000    20702 bytes  test/parse.js</tspan>
+<tspan x="10" y="234"> 13.  2017-04-07 16:30:55 +0000    19832 bytes  test/stringify.js</tspan>
+<tspan x="10" y="250"> 14.  2017-04-07 16:30:55 +0000     1073 bytes  test/utils.js</tspan>
 </text>
 </svg>

@@ -86,32 +86,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.qs.parse">module qs.parse</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.qs.parse.parse">
-            function <span class="apidocSignatureSpan">qs.</span>parse
-            <span class="apidocSignatureSpan">(str, opts)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.qs.stringify">module qs.stringify</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.qs.stringify.stringify">
-            function <span class="apidocSignatureSpan">qs.</span>stringify
-            <span class="apidocSignatureSpan">(object, opts)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
     <li class="apidocModuleLi"><a href="#apidoc.module.qs.utils">module qs.utils</a><ol>
 
         <li>
@@ -370,195 +344,6 @@ assert.equal(str, 'a=c');
 </div>
 
 <div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.qs.parse" id="apidoc.module.qs.parse">module qs.parse</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.qs.parse.parse" id="apidoc.element.qs.parse.parse">
-        function <span class="apidocSignatureSpan">qs.</span>parse
-        <span class="apidocSignatureSpan">(str, opts)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">parse = function (str, opts) {
-    var options = opts || {};
-
-    if (options.decoder !== null &amp;&amp; options.decoder !== undefined &amp;&amp; typeof options.decoder !== 'function') {
-        throw new TypeError('Decoder has to be a function.');
-    }
-
-    options.delimiter = typeof options.delimiter === 'string' || utils.isRegExp(options.delimiter) ? options.delimiter : defaults
-.delimiter;
-    options.depth = typeof options.depth === 'number' ? options.depth : defaults.depth;
-    options.arrayLimit = typeof options.arrayLimit === 'number' ? options.arrayLimit : defaults.arrayLimit;
-    options.parseArrays = options.parseArrays !== false;
-    options.decoder = typeof options.decoder === 'function' ? options.decoder : defaults.decoder;
-    options.allowDots = typeof options.allowDots === 'boolean' ? options.allowDots : defaults.allowDots;
-    options.plainObjects = typeof options.plainObjects === 'boolean' ? options.plainObjects : defaults.plainObjects;
-    options.allowPrototypes = typeof options.allowPrototypes === 'boolean' ? options.allowPrototypes : defaults.allowPrototypes;
-    options.parameterLimit = typeof options.parameterLimit === 'number' ? options.parameterLimit : defaults.parameterLimit;
-    options.strictNullHandling = typeof options.strictNullHandling === 'boolean' ? options.strictNullHandling : defaults.strictNullHandling
-;
-
-    if (str === '' || str === null || typeof str === 'undefined') {
-        return options.plainObjects ? Object.create(null) : {};
-    }
-
-    var tempObj = typeof str === 'string' ? parseValues(str, options) : str;
-    var obj = options.plainObjects ? Object.create(null) : {};
-
-    // Iterate over the keys and setup the new object
-
-    var keys = Object.keys(tempObj);
-    for (var i = 0; i &lt; keys.length; ++i) {
-        var key = keys[i];
-        var newObj = parseKeys(key, tempObj[key], options);
-        obj = utils.merge(obj, newObj, options);
-    }
-
-    return utils.compact(obj);
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-
-## Usage
-
-```javascript
-var qs = require('qs');
-var assert = require('assert');
-
-var obj = qs.<span class="apidocCodeKeywordSpan">parse</span>('a=c');
-assert.deepEqual(obj, { a: 'c' });
-
-var str = qs.stringify(obj);
-assert.equal(str, 'a=c');
-```
-
-### Parsing Objects
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.qs.stringify" id="apidoc.module.qs.stringify">module qs.stringify</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.qs.stringify.stringify" id="apidoc.element.qs.stringify.stringify">
-        function <span class="apidocSignatureSpan">qs.</span>stringify
-        <span class="apidocSignatureSpan">(object, opts)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">stringify = function (object, opts) {
-    var obj = object;
-    var options = opts || {};
-
-    if (options.encoder !== null &amp;&amp; options.encoder !== undefined &amp;&amp; typeof options.encoder !== 'function') {
-        throw new TypeError('Encoder has to be a function.');
-    }
-
-    var delimiter = typeof options.delimiter === 'undefined' ? defaults.delimiter : options.delimiter;
-    var strictNullHandling = typeof options.strictNullHandling === 'boolean' ? options.strictNullHandling : defaults.strictNullHandling
-;
-    var skipNulls = typeof options.skipNulls === 'boolean' ? options.skipNulls : defaults.skipNulls;
-    var encode = typeof options.encode === 'boolean' ? options.encode : defaults.encode;
-    var encoder = typeof options.encoder === 'function' ? options.encoder : defaults.encoder;
-    var sort = typeof options.sort === 'function' ? options.sort : null;
-    var allowDots = typeof options.allowDots === 'undefined' ? false : options.allowDots;
-    var serializeDate = typeof options.serializeDate === 'function' ? options.serializeDate : defaults.serializeDate;
-    var encodeValuesOnly = typeof options.encodeValuesOnly === 'boolean' ? options.encodeValuesOnly : defaults.encodeValuesOnly;
-    if (typeof options.format === 'undefined') {
-        options.format = formats.default;
-    } else if (!Object.prototype.hasOwnProperty.call(formats.formatters, options.format)) {
-        throw new TypeError('Unknown format option provided.');
-    }
-    var formatter = formats.formatters[options.format];
-    var objKeys;
-    var filter;
-
-    if (typeof options.filter === 'function') {
-        filter = options.filter;
-        obj = filter('', obj);
-    } else if (Array.isArray(options.filter)) {
-        filter = options.filter;
-        objKeys = filter;
-    }
-
-    var keys = [];
-
-    if (typeof obj !== 'object' || obj === null) {
-        return '';
-    }
-
-    var arrayFormat;
-    if (options.arrayFormat in arrayPrefixGenerators) {
-        arrayFormat = options.arrayFormat;
-    } else if ('indices' in options) {
-        arrayFormat = options.indices ? 'indices' : 'repeat';
-    } else {
-        arrayFormat = 'indices';
-    }
-
-    var generateArrayPrefix = arrayPrefixGenerators[arrayFormat];
-
-    if (!objKeys) {
-        objKeys = Object.keys(obj);
-    }
-
-    if (sort) {
-        objKeys.sort(sort);
-    }
-
-    for (var i = 0; i &lt; objKeys.length; ++i) {
-        var key = objKeys[i];
-
-        if (skipNulls &amp;&amp; obj[key] === null) {
-            continue;
-        }
-
-        keys = keys.concat(stringify(
-            obj[key],
-            key,
-            generateArrayPrefix,
-            strictNullHandling,
-            skipNulls,
-            encode ? encoder : null,
-            filter,
-            sort,
-            allowDots,
-            serializeDate,
-            formatter,
-            encodeValuesOnly
-        ));
-    }
-
-    return keys.join(delimiter);
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-```javascript
-var qs = require('qs');
-var assert = require('assert');
-
-var obj = qs.parse('a=c');
-assert.deepEqual(obj, { a: 'c' });
-
-var str = qs.<span class="apidocCodeKeywordSpan">stringify</span>(obj);
-assert.equal(str, 'a=c');
-```
-
-### Parsing Objects
-
-[](#preventEval)
-```javascript
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.qs.utils" id="apidoc.module.qs.utils">module qs.utils</a></h1>
 
 
@@ -642,21 +427,15 @@ if (Array.isArray(target) &amp;&amp; Array.isArray(source)) {
     return obj;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-refs.push(obj);
-
-if (Array.isArray(obj)) {
-    var compacted = [];
-
-    for (var i = 0; i &lt; obj.length; ++i) {
-        if (obj[i] &amp;&amp; typeof obj[i] === 'object') {
-            compacted.push(exports.<span class="apidocCodeKeywordSpan">compact</span>(obj[i], refs));
-        } else if (typeof obj[i] !== 'undefined') {
-            compacted.push(obj[i]);
-        }
+    var keys = Object.keys(tempObj);
+    for (var i = 0; i &lt; keys.length; ++i) {
+        var key = keys[i];
+        var newObj = parseKeys(key, tempObj[key], options);
+        obj = utils.merge(obj, newObj, options);
     }
 
-    return compacted;
-}
+    return utils.<span class="apidocCodeKeywordSpan">compact</span>(obj);
+};
 ...</pre></li>
     </ul>
 
@@ -757,16 +536,20 @@ if (Array.isArray(obj)) {
     return !!(obj.constructor &amp;&amp; obj.constructor.isBuffer &amp;&amp; obj.constructor.isBuffer(obj));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-};
-
-exports.isBuffer = function (obj) {
-    if (obj === null || typeof obj === 'undefined') {
-        return false;
+    if (strictNullHandling) {
+        return encoder &amp;&amp; !encodeValuesOnly ? encoder(prefix) : prefix;
     }
 
-    return !!(obj.constructor &amp;&amp; obj.constructor.isBuffer &amp;&amp; obj.constructor.<span class="apidocCodeKeywordSpan
-">isBuffer</span>(obj));
-};
+    obj = '';
+}
+
+if (typeof obj === 'string' || typeof obj === 'number' || typeof obj === 'boolean' || utils.<span class="apidocCodeKeywordSpan">isBuffer</span>(obj)) {
+    if (encoder) {
+        var keyValue = encodeValuesOnly ? prefix : encoder(prefix);
+        return [formatter(keyValue) + '=' + formatter(encoder(obj))];
+    }
+    return [formatter(prefix) + '=' + formatter(String(obj))];
+}
 ...</pre></li>
     </ul>
 
@@ -782,7 +565,26 @@ exports.isBuffer = function (obj) {
     <li>description and source-code<pre class="apidocCodePre">isRegExp = function (obj) {
     return Object.prototype.toString.call(obj) === '[object RegExp]';
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+module.exports = function (str, opts) {
+var options = opts || {};
+
+if (options.decoder !== null &amp;&amp; options.decoder !== undefined &amp;&amp; typeof options.decoder !== 'function&amp;#
+x27;) {
+    throw new TypeError('Decoder has to be a function.');
+}
+
+options.delimiter = typeof options.delimiter === 'string' || utils.<span class="apidocCodeKeywordSpan">isRegExp</span>(
+options.delimiter) ? options.delimiter : defaults.delimiter;
+options.depth = typeof options.depth === 'number' ? options.depth : defaults.depth;
+options.arrayLimit = typeof options.arrayLimit === 'number' ? options.arrayLimit : defaults.arrayLimit;
+options.parseArrays = options.parseArrays !== false;
+options.decoder = typeof options.decoder === 'function' ? options.decoder : defaults.decoder;
+options.allowDots = typeof options.allowDots === 'boolean' ? options.allowDots : defaults.allowDots;
+options.plainObjects = typeof options.plainObjects === 'boolean' ? options.plainObjects : defaults.plainObjects;
+options.allowPrototypes = typeof options.allowPrototypes === 'boolean' ? options.allowPrototypes : defaults.allowPrototypes
+;
+...</pre></li>
     </ul>
 
 
@@ -849,21 +651,18 @@ exports.isBuffer = function (obj) {
     }, mergeTarget);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    mergeTarget = exports.arrayToObject(target, options);
-}
 
-if (Array.isArray(target) &amp;&amp; Array.isArray(source)) {
-    source.forEach(function (item, i) {
-        if (has.call(target, i)) {
-            if (target[i] &amp;&amp; typeof target[i] === 'object') {
-                target[i] = exports.<span class="apidocCodeKeywordSpan">merge</span>(target[i], item, options);
-            } else {
-                target.push(item);
-            }
-        } else {
-            target[i] = item;
-        }
-    });
+    // Iterate over the keys and setup the new object
+
+    var keys = Object.keys(tempObj);
+    for (var i = 0; i &lt; keys.length; ++i) {
+        var key = keys[i];
+        var newObj = parseKeys(key, tempObj[key], options);
+        obj = utils.<span class="apidocCodeKeywordSpan">merge</span>(obj, newObj, options);
+    }
+
+    return utils.compact(obj);
+};
 ...</pre></li>
     </ul>
 
